@@ -1,7 +1,18 @@
-# Project Name: Hyrance
+# Project Name: FlexiAPI
 
-## Description
-Hyrance is a demo project consisting of a frontend, backend, and MongoDB database, all packaged and deployed using Docker containers. This guide will walk you through setting up and using the Hyrance project for your development or testing purposes.
+## 📌 Description  
+
+This project is a full-stack web application built with **GraphQL, Express.js, TypeScript, React, and Docker**.  
+It provides a **scalable, type-safe, and containerized solution** for modern web development.  
+
+## 🚀 Tech Stack  
+
+- **GraphQL** – API query language for flexible data fetching  
+- **Express.js** – Fast, lightweight Node.js web framework  
+- **TypeScript** – Typed JavaScript for better maintainability  
+- **React.js** – Frontend UI with reusable components  
+- **Docker** – Containerized deployment for consistency  
+
 
 ## Prerequisites
 - Docker installed on your system ([Install Docker](https://docs.docker.com/get-docker/))
