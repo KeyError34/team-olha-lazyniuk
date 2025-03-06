@@ -1,7 +1,7 @@
 // tests/setup.ts
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import config from '../src/core/config/test';
+import config from '../core/config/test';
 
 let mongoServer: MongoMemoryServer;
 

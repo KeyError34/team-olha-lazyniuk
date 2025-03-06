@@ -1,33 +1,40 @@
 import express from 'express';
-import { createHandler } from 'graphql-http/lib/use/express';
-import { buildSchema } from 'graphql';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
-import { ruruHTML } from 'ruru/server';
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }`);
+import bodyParser from 'body-parser';
+import { typeDefs } from './graphql/schema.ts';
+import { resolvers } from './graphql/resolvers.ts';
 
-const root = {
-  hello: () => 'Hello world!',
-};
+async function startApolloServer() {
+  const app = express();
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+  const server = new ApolloServer({ typeDefs, resolvers });
 
-app.all(
-  '/graphql',
-  createHandler({
-    schema,
-    rootValue: root,
-  }),
-);
+  // Start the Apollo Server
+  await server.start();
 
-// Serve GraphiQL IDE
-app.get('/', (_req, res) => {
-  res.type('html');
-  res.end(ruruHTML({ endpoint: '/graphql' }));
-});
+  // Apply the Apollo GraphQL middleware and set the path to /graphql
+  app.use(
+    '/graphql',
+    cors<cors.CorsRequest>() as unknown as express.RequestHandler, // Double type assertion
+    bodyParser.json(),
+    expressMiddleware(server, {
+      context: async ({ req }) => ({ token: req.headers.authorization }),
+    }),
+  );
 
-export default app;
+  // Optional: Simple endpoint for testing
+  app.get('/', (req, res) => {
+    res.send('Express server is running!');
+  });
+
+  const port = process.env.PORT || 4000;
+
+  app.listen(port, () => {
+    console.log(`Express Server:   http://localhost:${port}`);
+    console.log(`GraphQL endpoint: http://localhost:${port}/graphql`);
+  });
+}
+
+startApolloServer();

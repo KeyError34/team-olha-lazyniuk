@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import config from '../src/core/config/test'; // Import test environment config
+import config from '../core/config/test'; // Import test environment config
 
 describe('Configuration', () => {
   it('should connect to the in-memory MongoDB server', async () => {
@@ -14,4 +14,3 @@ describe('Configuration', () => {
     expect(config.dbName).toBe('myapp_test');
   });
 });
-

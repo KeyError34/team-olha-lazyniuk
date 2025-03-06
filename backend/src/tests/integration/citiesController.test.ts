@@ -1,6 +1,6 @@
 import request from 'supertest';
-import app from '../../src/app';
-import { City } from '../../src/domain/cities/models/city';
+import app from '../../app';
+import { City } from '../../domain/cities/models/city';
 
 describe('Cities API', () => {
   it('GET /cities - should return all cities', async () => {

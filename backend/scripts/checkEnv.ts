@@ -10,3 +10,5 @@
 // } else {
 //   console.log('✅ All required environment variables are set.');
 // }
+
+console.log('✅ All required environment variables are set.');

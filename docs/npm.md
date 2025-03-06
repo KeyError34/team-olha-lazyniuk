@@ -29,5 +29,9 @@ npm outdated
 npm update
 
 git add .
-git commit -m ".prettierignore added"
+git commit -m "Apollo added"
 git push origin main
+
+
+ npm dedupe
+ npm install

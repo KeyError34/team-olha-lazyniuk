@@ -11,7 +11,7 @@ error: src refspec main does not match any
 error: failed to push some refs to 'https://github.com/saeedhei/devops-github-actions.git'
 git checkout -b main
 git push origin main
-
+git pull origin main --force
 rm .git/index.lock
 
 …or create a new repository on the command line
@@ -28,3 +28,18 @@ git push -u origin main
 git remote add origin https://github.com/saeedhei/devops-github-actions.git
 git branch -M main
 git push -u origin main
+
+
+
+git add .
+git commit -m "Save local changes before pull"
+git pull origin main
+
+git stash
+git pull origin main
+git stash pop  # Apply stashed changes back after pulling
+
+git reset --hard
+git pull origin main --force
+
+

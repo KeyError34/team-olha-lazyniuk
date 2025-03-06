@@ -1,6 +1,6 @@
 {
   "watch": ["src"],
   "ext": "ts",
-    "ignore": ["node_modules"],
-  "exec": "ts-node -r tsconfig-paths/register src/bin/www" 
+  "ignore": ["node_modules", "dist"],
+  "exec": "tsx src/app.ts -r tsconfig-paths/register"
 }
