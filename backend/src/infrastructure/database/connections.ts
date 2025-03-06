@@ -8,7 +8,8 @@ export const connectToDatabase = async () => {
   // }
   try {
     await mongoose.connect(
-      `${mongoConfig.uri}/${mongoConfig.dbName}`,
+      `${mongoConfig.uri}`||
+          `mongodb://localhost:27017/${mongoConfig.dbName}`,
       {} as mongoose.ConnectOptions,
     );
     const blue = '\x1b[34m';

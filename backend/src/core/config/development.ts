@@ -1,6 +1,8 @@
 export default {
-  env: 'development',
-  port: parseInt(process.env.PORT || '3000', 10),
-  mongoURI: process.env.MONGO_URI || 'mongodb://localhost:27017',
-  dbName: process.env.MONGO_DB_NAME || 'myapp_dev',
+  port: process.env.PORT || 3000,
+  jwtSecret: process.env.JWT_SECRET,
+  mongoURI: process.env.MONGO_URI,
+  dbName: process.env.DB_NAME,
+  dbUser: process.env.DB_USER,
+  dbPass: process.env.DB_PASS,
 };

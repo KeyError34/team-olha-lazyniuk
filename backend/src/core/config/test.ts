@@ -1,6 +1,8 @@
 export default {
-  env: 'test',
-  port: 4000,
-  mongoURI: 'mongodb://localhost:27017',
-  dbName: 'myapp_test',
+  port: process.env.PORT || 4000,
+  jwtSecret: process.env.JWT_SECRET,
+  mongoURI: process.env.MONGO_URI,
+  dbName: process.env.DB_NAME,
+  dbUser: process.env.DB_USER,
+  dbPass: process.env.DB_PASS,
 };

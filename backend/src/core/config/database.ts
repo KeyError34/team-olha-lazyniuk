@@ -4,9 +4,13 @@
 // };
 
 import config from './index';
-
+console.log(config.dbUser);
+console.log(config.dbPass);
+console.log(config.mongoURI);
+console.log(config.dbName);
 export const mongoConfig = {
-  uri: config.mongoURI,
+  uri:
+    `mongodb+srv://${config.dbUser}:${config.dbPass}@${config.mongoURI}/${config.dbName}?retryWrites=true&w=majority` ,
   dbName: config.dbName,
   env: config.env,
 };
