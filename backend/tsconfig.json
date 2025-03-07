@@ -11,8 +11,7 @@
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
-    "allowJs": true,
-    "checkJs": false
+
   },
   "include": ["src", "tests"],
   "exclude": ["node_modules"]
