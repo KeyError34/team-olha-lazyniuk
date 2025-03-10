@@ -5,4 +5,5 @@ export default {
   dbName: process.env.DB_NAME,
   dbUser: process.env.DB_USER,
   dbPass: process.env.DB_PASS,
+  env: process.env.NODE_ENV,
 };
