@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import cityRoutes from '../domain/cities/routes';
+import cityRoutes from '../domain/cities/routes.js';
 const router = express.Router();
 
 router.get('/', (req: Request, res: Response): void => {
