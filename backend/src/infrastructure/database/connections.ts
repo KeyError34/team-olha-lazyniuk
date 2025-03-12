@@ -1,6 +1,6 @@
 // without test
 import mongoose from 'mongoose';
-import { mongoConfig } from '../../core/config/database';
+import { mongoConfig } from '../../core/config/database.js';
 export const connectToDatabase = async () => {
   // if (mongoose.connection.readyState === 1) {
   //   // If already connected, reuse the connection

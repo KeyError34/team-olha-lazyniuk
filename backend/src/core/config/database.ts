@@ -3,7 +3,7 @@
 //   dbName: process.env.MONGO_DB_NAME || 'cities',
 // };
 
-import config from './index.ts';
+import config from './index.js';
 console.log(config.dbUser);
 console.log(config.dbPass);
 console.log(config.mongoURI);
