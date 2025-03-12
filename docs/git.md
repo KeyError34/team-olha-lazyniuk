@@ -4,7 +4,7 @@ git remote add origin https://github.com/saeedhei/devops-github-actions.git
 git remote -v
 
 git add .
-git commit -m "Stack Added"
+git commit -m "ts updated"
 git push origin main
 
 error: src refspec main does not match any
