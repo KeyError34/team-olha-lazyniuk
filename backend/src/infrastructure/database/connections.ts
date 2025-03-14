@@ -6,6 +6,7 @@ export const connectToDatabase = async () => {
   //   // If already connected, reuse the connection
   //   return;
   // }
+  console.log('com')
   try {
     await mongoose.connect(
       `${mongoConfig.uri}`||
@@ -22,3 +23,4 @@ export const connectToDatabase = async () => {
     process.exit(1);
   }
 };
+// connectToDatabase()

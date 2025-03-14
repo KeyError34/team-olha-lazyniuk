@@ -1,19 +1,31 @@
-import { gql } from "graphql-tag";
+import { gql } from 'graphql-tag';
 
 export const typeDefs = gql`
   type User {
     id: ID!
-    name: String!
+    userName: String!
+    password: String!
+    phonNumber: String
     email: String!
-    fullName: String
+    firstName: String!
+    lastName: String!
+    role: String
   }
 
   type Query {
-    hello: String
+    getUsers: [User!]!
     getUser(id: ID!): User
   }
 
   type Mutation {
-    createUser(name: String!, email: String!): User
+    createUser(
+      userName: String!
+      password: String!
+      phonNumber: String
+      email: String!
+      firstName: String!
+      lastName: String!
+      
+    ): User!
   }
 `;

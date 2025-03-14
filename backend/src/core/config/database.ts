@@ -4,10 +4,10 @@
 // };
 
 import config from './index.js';
-console.log(config.dbUser);
-console.log(config.dbPass);
-console.log(config.mongoURI);
-console.log(config.dbName);
+console.log('dbUser', config.dbUser);
+console.log("dbPass",config.dbPass);
+console.log('mongoURI', config.mongoURI);
+console.log('dbName', config.dbName);
 export const mongoConfig = {
   uri: `mongodb+srv://${config.dbUser}:${config.dbPass}@${config.mongoURI}/${config.dbName}?retryWrites=true&w=majority`,
   dbName: config.dbName,

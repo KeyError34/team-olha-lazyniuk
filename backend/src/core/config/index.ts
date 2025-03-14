@@ -3,23 +3,34 @@
 // export * from './production';
 // export * from './test';
 
-import { config } from 'dotenv';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+//  dotenv as ESM 
+import * as dotenv from 'dotenv';
 
 // Load environment-specific .env file
-const envFile = `.env.${process.env.NODE_ENV}`;
-const envPath = path.resolve(__dirname, `../../../${envFile}`); // Adjusted path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const envName = process.env.NODE_ENV || 'development'; 
+const envFile = `.env.${envName}`;
+const envPath = path.resolve(__dirname, '../../../', envFile);// Adjusted path
+
 console.log(`Loading environment variables from: ${envPath}`); // Debugging
-config({ path: envPath });
+
+// Load environment variables via asynchronous import
+dotenv.config({ path: envPath });
+
 console.log('Loaded environment variables:', process.env.PORT, process.env.NODE_ENV);
 
 type Environment = 'development' | 'production' | 'test';
 const env = (process.env.NODE_ENV || 'development') as Environment;
 console.log(env);
+
 const configurations = {
-  development: () => require('./development').default,
-  production: () => require('./production').default,
-  test: () => require('./test').default,
+  development: async () => (await import('./development.js')).default,
+  production: async () => (await import('./production.js')).default,
+  test: async () => (await import('./test.js')).default,
 };
 
-export default configurations[env]();
+export default await configurations[env]();

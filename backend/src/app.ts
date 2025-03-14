@@ -5,10 +5,10 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { typeDefs } from './graphql/schema.js';
 import { resolvers } from './graphql/resolvers.js';
-
+import { connectToDatabase } from './infrastructure/database/connections.js';
 async function startApolloServer() {
   const app = express();
-
+  connectToDatabase()
   const server = new ApolloServer({ typeDefs, resolvers });
 
   // Start the Apollo Server
