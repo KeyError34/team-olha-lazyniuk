@@ -3,12 +3,15 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { typeDefs } from './graphql/schema.js';
-import { resolvers } from './graphql/resolvers.js';
+// import { typeDefs } from './graphql/schema.js';
+// import { resolvers } from './graphql/resolvers.js';
+import { typeDefs } from './domain/users/presentation/userSchema.js';
+import { resolvers } from './domain/users/presentation/userResolvers.js';
+// import { typeDefs, resolvers } from './graphql/index.js';
 import { connectToDatabase } from './infrastructure/database/connections.js';
 async function startApolloServer() {
   const app = express();
-  connectToDatabase()
+  connectToDatabase();
   const server = new ApolloServer({ typeDefs, resolvers });
 
   // Start the Apollo Server

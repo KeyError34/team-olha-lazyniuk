@@ -1,42 +1,18 @@
-// import UserRepository from '../repositories/userRepository.js';
+import { UserRepository } from '../repositories/userRepository.js';
+import { User } from '../models/user.js';
 
-// interface UserData {
-//   // Define the structure of userData here
-//   name: string;
-//   email: string;
-//   password: string;
-// }
+export class UserService {
+  constructor(private userRepository: UserRepository) {}
 
-// class UserService {
-//   private userRepository: UserRepository;
+  async getUser(id: string): Promise<User | null> {
+    return this.userRepository.findById(id);
+  }
 
-//   constructor() {
-//     this.userRepository = new UserRepository();
-//   }
+  async updateUserEmail(id: string, newEmail: string): Promise<void> {
+    const user = await this.userRepository.findById(id);
+    if (!user) throw new Error('User not found');
 
-//   // Create a new user
-//   async createUser(userData: UserData): Promise<UserData> {
-//     const newUser = await this.userRepository.create(userData);
-//     return newUser;
-//   }
-
-//   // Get a user by ID
-//   async getUserById(id: string): Promise<UserData | null> {
-//     const user = await this.userRepository.findById(id);
-//     return user;
-//   }
-
-//   // Update a user's information
-//   async updateUser(id: string, userData: UserData): Promise<UserData> {
-//     const updatedUser = await this.userRepository.update(id, userData);
-//     return updatedUser;
-//   }
-
-//   // Delete a user
-//   async deleteUser(id: string): Promise<boolean> {
-//     const response = await this.userRepository.delete(id);
-//     return response;
-//   }
-// }
-
-// export default UserService;
+    user.changeEmail(newEmail);
+    await this.userRepository.save(user);
+  }
+}
